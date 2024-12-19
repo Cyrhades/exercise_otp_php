@@ -1,0 +1,30 @@
+{% extends 'web/layout.html.twig' %}
+
+{% block content %}
+<section>
+    <h2>{{ 'Confirm Code' }}</h2>
+
+    {% if error %}
+        <div class="alert alert-danger">{{ error }}</div>
+    {% endif %}     
+    <form method="post" action="/a2f">
+        <input type="text" class="otp-input" maxlength="1" id="otp1">
+        <input type="text" class="otp-input" maxlength="1" id="otp2">
+        <input type="text" class="otp-input" maxlength="1" id="otp3">
+        <input type="text" class="otp-input" maxlength="1" id="otp4">
+        <input type="text" class="otp-input" maxlength="1" id="otp5">
+        <input type="text" class="otp-input" maxlength="1" id="otp6">
+    
+        <input type="hidden" id="hiddenOtp" name="otp_code">
+        <button id="valid_2fa" class="btn btn-primary" style="font-size: 16px; padding:8px 8px;" >Valider</button>
+    </form>       
+    <form method="post" action="/a2f">
+        <input type="hidden" name="stop_2fa">
+        <button type="submit" class="btn btn-primary">Annuler</button>
+    </form>    
+</section>
+{% endblock %}
+
+{% block blockjs %}
+<script src="/otp.js"></script>
+{% endblock %}

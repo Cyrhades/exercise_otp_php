@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="{{ lang }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="/favicon.ico">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo-container">
+                <a href="/">
+                    <img src="/logo.png" alt="{{ 'DevSocialNetwork' }}" class="site-logo">
+                    <h1>{{ 'DevSocialNetwork' }}</h1>
+                </a>
+            </div>
+            
+            <button class="burger-menu" id="burger-menu">
+                ☰
+            </button>
+            <nav id="main-menu">
+                <a href="/" class="{{ page == 'index' ? 'active' : '' }}">{{ 'Home' }}</a>
+                {% if app.user %}
+                    <a href="/profile" class="{{ page == 'profile' ? 'active' : '' }}">{{ 'Profile' }}</a>
+                    <a href="/disconnect">{{ 'Disconnect' }}</a>
+                {% else %}
+                    <a href="/signup" class="{{ page == 'signup' ? 'active' : '' }}">{{ 'Sign Up' }}</a>
+                    <a href="/signin" class="{{ page == 'signin' ? 'active' : '' }}">{{ 'Sign In' }}</a>
+                {% endif %}
+            </nav>
+            <nav id="multi-lang">
+                <div class="dropdown">
+                    <button class="dropbtn">
+                        <img src="/flags/{{ lang??'en' }}.svg" alt="{{ lang??'en' }}" class="flag-icon">
+                        <span>{{ ('language_' ~ lang) }}</span>
+                    </button>
+                    <div class="dropdown-content">
+                        <a href="?lang=en">
+                            <img src="/flags/en.svg" alt="{{ 'language_en' }}" class="flag-icon" width="16px"> {{ 'language_en' }}
+                        </a>
+                        <a href="?lang=fr">
+                            <img src="/flags/fr.svg" alt="{{ 'language_fr' }}" class="flag-icon" width="16px"> {{ 'language_fr' }}
+                        </a>
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+        <main>
+           {% if app.flashbag|length > 0 %}   
+            <div id="flashbag">   
+                {% if app.flashbag.type == "success" %}
+                    <div class="alert alert-success">{{ app.flashbag.message }} </div>
+                {% elseif app.flashbag.type == "error" %}
+                    <div class="alert alert-danger">{{ app.flashbag.message }}</div>
+                {% endif %}
+                </div>
+            {% endif %}
+
+            {% block content %}{% endblock %}
+        </main>
+
+        <footer>
+            <p>&copy; {{ "now"|date("Y") }} DevSocialNetwork</p>
+        </footer>
+    </div>
+    <script src="/script.js"></script>
+    {% block blockjs %}{% endblock %}
+</body>
+</html>
