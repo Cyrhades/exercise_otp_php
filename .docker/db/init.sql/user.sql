@@ -4,8 +4,6 @@ CREATE TABLE `user` (
   `username` varchar(40) NOT NULL,
   `email` varchar(250) NOT NULL,
   `password` varchar(250) NOT NULL,
-  `otp_secret` varchar(40) DEFAULT NULL,
-  `otp_enable` int NOT NULL DEFAULT '0',
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 

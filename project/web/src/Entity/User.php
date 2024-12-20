@@ -14,14 +14,6 @@ class User implements EntityInterface {
 
     private string $password;
 
-    private array $roles;
-
-    private int $activated;
-
-    private ?string $otp_secret;
-
-    private int $otp_enable;
-
     private string $created_at;
 
     /**
@@ -93,90 +85,6 @@ class User implements EntityInterface {
      */
     public function setPassword(string $password): self {
         $this->password = $password;
-        return $this;
-    }
-
-    /**
-     * Get the value of roles
-     *
-     * @return array
-     */
-    public function getRoles(): array {
-        return $this->roles;
-    }
-
-    /**
-     * Set the value of roles
-     *
-     * @param array $roles
-     *
-     * @return self
-     */
-    public function setRoles(array $roles): self {
-        $this->roles = $roles;
-        return $this;
-    }
-
-    /**
-     * Get the value of activated
-     *
-     * @return int
-     */
-    public function getActivated(): int {
-        return $this->activated;
-    }
-
-    /**
-     * Set the value of activated
-     *
-     * @param int $activated
-     *
-     * @return self
-     */
-    public function setActivated(int $activated): self {
-        $this->activated = $activated;
-        return $this;
-    }
-
-    /**
-     * Get the value of secretOtp
-     *
-     * @return string
-     */
-    public function getOtpSecret(): ?string {
-        return $this->otp_secret;
-    }
-
-    /**
-     * Set the value of secretOtp
-     *
-     * @param string $secretOtp
-     *
-     * @return self
-     */
-    public function setOtpSecret(string $otp_secret): self {
-        $this->otp_secret = $otp_secret;
-        return $this;
-    }
-
-    /**
-     * Get the value of otp_enable
-     *
-     * @return int
-     */
-    public function getOtpEnable(): int {
-        return $this->otp_enable;
-    }
-
-    /**
-     * Set the value of otp_enable
-     *
-     * @param int $otp_enable
-     *
-     * @return self
-     */
-    public function setOtpEnable(int $otp_enable): self {
-        $this->otp_enable = $otp_enable;
         return $this;
     }
 

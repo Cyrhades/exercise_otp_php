@@ -9,10 +9,8 @@ class DisconnectController extends AbstractController
 {
     public function get() 
     {
-        unset($_SESSION['user']);
-        unset($_SESSION['FULL_AUTHENTICATED']);
+        unset($_SESSION['user']);        
         $this->flash()->set("Vous êtes maintenant déconnecté","success");
         $this->redirectToRoute('/');
     }
-
 }

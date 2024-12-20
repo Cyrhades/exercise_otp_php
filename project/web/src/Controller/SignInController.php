@@ -23,13 +23,8 @@ class SignInController extends AbstractController
                 if($user) {
                     if (password_verify($_POST["password"], $user->getPassword())) {
                         $this->connectUser($user);
-                        if($this->getUser()->getOtpEnable() != '1') {
-                            $_SESSION['FULL_AUTHENTICATED'] = true;
-                            $this->flash()->set("Vous êtes maintenant connecté","success");
-                            $this->redirectToRoute('/');
-                        } else {
-                            $this->redirectToRoute('/a2f');
-                        }
+                        $this->flash()->set("Vous êtes maintenant connecté","success");
+                        $this->redirectToRoute('/');
                         return;
                     } else {
                         $error = "L'identification a échouée";
