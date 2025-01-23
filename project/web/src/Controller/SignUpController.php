@@ -38,7 +38,7 @@ class SignUpController extends AbstractController
                     if ($e->getCode() === '23000') { 
                         $error = 'Cet utilisateur existe déjà';
                     } else {
-                        $error = 'Une erreur est survenue';
+                        $error = 'Une erreur est survenue !!!!';
                     }
                 }
             } else {
