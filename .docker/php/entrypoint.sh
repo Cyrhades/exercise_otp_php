@@ -5,6 +5,11 @@ if [ ! -d "/var/www/html/" ]; then
   mkdir -p /var/www/html/
 fi
 
+if [ ! -d "/var/www/html/vendor" ]; then
+  composer install
+fi
+
+
 # Vérifier si le dossier est vide
 if [ -z "$(ls -A /var/www/html/)" ]; then
   mv /tmp/.htaccess  /var/www/html/public/.htaccess
@@ -22,7 +27,7 @@ if [ -z "$(ls -A /var/www/html/)" ]; then
   echo 'PhpMyAdmin : http://localhost:8080'
 fi
 
-# Démarrer PHP-FPM et arrêter la sortie dans la console
-php-fpm > /dev/null 2>&1
 
-exec "$@" > /dev/null 2>&1
+# Démarrer PHP-FPM et arrêter la sortie dans la console
+php-fpm
+exec "$@"

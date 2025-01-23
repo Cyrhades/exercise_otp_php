@@ -26,8 +26,8 @@ RUN curl -sS https://getcomposer.org/installer | php \
     && mv /var/www/html/composer.phar /usr/local/bin/composer
 
 # Configurer Git globalement
-RUN git config --global user.email "cyrhades76@gmail.com" \
-    && git config --global user.name "Cyrhades"
+RUN git config --global user.email "simple@user.fr" \
+    && git config --global user.name "User"
 
 
 COPY .htaccess /tmp/.htaccess
