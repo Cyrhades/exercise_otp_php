@@ -27,7 +27,7 @@ services:
             PMA_PASSWORD: ${MYSQL_PASSWORD}
             PMA_PORT: 3306
         ports:
-            - 8080:80
+            - ${PORT_PHPMYADMIN}:80
  
     apache:
         build:
@@ -39,7 +39,7 @@ services:
         volumes:
             - ../project/web:/var/www/html:cached
         ports:
-            - 80:80
+            - ${PORT_HTTP}:80
         depends_on:
             - php
     php:
