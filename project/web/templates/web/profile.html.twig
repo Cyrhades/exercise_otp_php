@@ -1,0 +1,9 @@
+{% extends 'web/layout.html.twig' %}
+
+{% block content %}
+<section>
+    <h2>{{ 'Profil' }}</h2>
+    <p><strong>{{ 'Username' }}:</strong>   {{ app.user.username }}<p>
+    <p><strong>{{ 'Email' }}:</strong>   {{ app.user.email }}<p>
+</section>
+{% endblock %}

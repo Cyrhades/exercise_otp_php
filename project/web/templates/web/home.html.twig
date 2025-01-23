@@ -1,0 +1,42 @@
+{% extends 'web/layout.html.twig' %}
+
+{% block content %}
+<section>
+    <h2>{{ 'Join the community of passionate developers' }}</h2>
+    <p>{{ 'Discover projects, share your code and collaborate with other developers.' }}</p>
+    
+    <hr>
+    <div class="project-grid">
+        {% set projects = [
+            { name: 'Project Alpha', description: 'An open-source project focused on AI development.', stars: 4, users: ['JohnDoe', 'JaneSmith'] },
+            { name: 'DevConnect', description: 'A social platform for developers to connect and share ideas.', stars: 5, users: ['CoderMike', 'JaneSmith'] },
+            { name: 'CodeStream', description: 'A collaborative coding environment for remote teams.', stars: 3, users: ['AliceDev', 'JohnDoe'] },
+            { name: 'BugTracker', description: 'A tool to help teams track and manage software bugs.', stars: 4, users: ['BugHunter', 'DevNinja'] },
+            { name: 'Docsify', description: 'A lightweight documentation generator for projects.', stars: 5, users: ['TechWriter', 'AliceDev'] },
+            { name: 'TaskMaster', description: 'A project management tool designed for agile teams.', stars: 4, users: ['AgileGuru', 'CoderMike'] }
+        ] %}
+        
+        {% for project in projects %}
+        <div class="project-tile">
+            <h3>{{ project.name }}</h3>
+            <p>{{ project.description }}</p>
+            <div class="stars">
+                {% for i in 1..project.stars %}
+                    <span>&#9733;</span>
+                {% endfor %}
+                {% for i in project.stars+1..5 %}
+                    <span>&#9734;</span>
+                {% endfor %}
+            </div>
+            <p class="project-users">
+                <strong>{{ 'Contributors' }}:</strong> 
+                {% for user in project.users %}
+                    {{ user }}{% if not loop.last %}, {% endif %}
+                {% endfor %}
+            </p>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+{% endblock %}

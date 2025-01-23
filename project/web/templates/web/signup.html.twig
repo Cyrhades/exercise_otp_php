@@ -1,0 +1,48 @@
+{% extends 'web/layout.html.twig' %}
+
+{% block content %}
+<section>
+    <h2>{{ 'Sign Up' }}</h2>
+    {% if error %}
+        <div class="alert alert-danger">{{ error }}</div>
+    {% endif %}
+    <form action="/signup" method="post" class="signup-form">
+        <div class="form-group">
+            <label for="username">{{ 'Username' }}:</label>
+            <input 
+                type="text" 
+                id="username" 
+                name="username" 
+                placeholder="{{ 'Username' }}" 
+                value="{{ username|default('') }}" 
+                required>
+        </div>
+
+        <div class="form-group">
+            <label for="email">{{ 'Email' }}:</label>
+            <input 
+                type="email" 
+                id="email" 
+                name="email" 
+                placeholder="{{ 'Email' }}" 
+                maxlength="250" 
+                value="{{ email|default('') }}" 
+                required>
+        </div>
+
+        <div class="form-group">
+            <label for="password">{{ 'Password' }}:</label>
+            <input 
+                type="password" 
+                id="password" 
+                name="password" 
+                placeholder="{{ 'Password' }}" 
+                required>
+            <small><i>{{ 'Password requires at least 6 characters.' }}</i></small>
+        </div>
+        
+        <button type="submit" class="btn btn-primary">{{ 'Sign Up' }}</button>
+    </form>
+</section>
+
+{% endblock %}
